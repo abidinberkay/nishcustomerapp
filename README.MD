@@ -18,7 +18,7 @@ docker-compose up -d
 
 docker run -p 3306:3306 -v /tmp:/tmp --name mysqlcustomerdb --detach -e MYSQL_ROOT_PASSWORD="1234" -e MYSQL_ROOT_HOST=% -e MYSQL_DATABASE=mysqlcustomerdb -d mysql/mysql-server:latest-aarch64 --lower_case_table_names=1 --init-connect='GRANT CREATE USER ON . TO 'root'@'%';FLUSH PRIVILEGES;’
 
-docker run --name postgres-db -e POSTGRES_PASSWORD=25472547 -p 5432:5432 -d postgres
+docker run --name postgres-db -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1234 -p 5432:5432 -d postgres
 
 2.1.2- Or run docker-compose.yml file by commenting out the frontend and nishcustomer services.
 
