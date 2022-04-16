@@ -10,7 +10,7 @@ Comment out the specified local db properties and use docker properties as instr
 run the command on terminal:
 docker-compose up -d
 
-(Backend service will be ready in 1 minutes and may be restarted couple of times for waiting db containers to be ready)
+(Backend service will be ready in 1 minutes and may be restarted couple of times for waiting db containers to be ready, and it will be up in 1 min after restarting automatically)
 
 # 2.RUNNING PROJECT FROM LOCAL
 
