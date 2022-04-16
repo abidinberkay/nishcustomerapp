@@ -16,9 +16,11 @@ docker-compose up -d
 
 2.1.1- If you do not use docker-compose.yml file, just run following 2 commands to run db containers:
 
-docker run -p 3306:3306 -v /tmp:/tmp --name mysqlcustomerdb --detach -e MYSQL_ROOT_PASSWORD="1234" -e MYSQL_ROOT_HOST=% -e MYSQL_DATABASE=mysqlcustomerdb -d mysql/mysql-server:latest-aarch64 --lower_case_table_names=1 --init-connect='GRANT CREATE USER ON . TO 'root'@'%';FLUSH PRIVILEGES;’
+(for the following command remove latest-aarch64 tag from the command If you are not using Apple M1 chip, I hate this config problem but I do not have an intel chip pc so sorry)
 
-docker run --name postgres-db -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1234 -p 5432:5432 -d postgres
+docker run -p 3306:3306 -v /tmp:/tmp --name mysqlcustomerdb --detach -e MYSQL_ROOT_PASSWORD="1234" -e MYSQL_ROOT_HOST=% -e MYSQL_DATABASE=mysqlcustomerdb -d mysql/mysql-server:latest-aarch64 --lower_case_table_names=1 --init-connect='GRANT CREATE USER ON . TO 'root'@'%';FLUSH PRIVILEGES;'
+
+docker run --name postgresfiledb -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1234 -p 5432:5432 -d postgres
 
 2.1.2- Or run docker-compose.yml file by commenting out the frontend and nishcustomer services.
 
