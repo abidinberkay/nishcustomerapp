@@ -41,3 +41,7 @@ Notes:
 - Everything is mostly done on backend except JWT.
 
 - Front-end is not completed, File page and operations (add, update) are not working from front-end. Postman request to backend (add file, update file) are working via Postman but not working from front-end. This issue got %95 of my time, I am about the break the pc, I decided to even not to start JWT thingy without that but time is up. If you can find why I can't send file from front-end and inform me (even if you do not want to proceed interviews with me) I would be very happy, pretty sure some 'header' or 'axios properties' are wrong but could not find yet.
+
+-For testing file operations use postman to send requests, e.g.
+![image](https://user-images.githubusercontent.com/39677316/163683362-a79acae2-f62f-4bc3-a863-cf6cedc3711a.png)
+
