@@ -3,8 +3,10 @@ I am using apple M1 chip ps, and sometimes container images are making problem a
 
 # 1.RUNNING PROJECT FROM DOCKER
 
-1.1- Edit application.properties file on backend https://github.com/abidinberkay/nishcustomerapp/blob/main/nishcustomer/src/main/resources/application.properties
-Comment out the specified local db properties and use docker properties as instructed on the file.
+1.1- Edit application.properties file on backend 
+'/nishcustomer/src/main/resources/application.properties'
+
+Comment out the specified local db properties and use docker properties as instructed in the file.
 
 1.2- Go to main directory (where the docker-compose.yml file is located)
 run the command on terminal:
