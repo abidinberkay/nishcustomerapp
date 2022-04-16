@@ -1,0 +1,51 @@
+.buttonFooter {
+    background-color: gray;
+    align-items: center;
+    flex-direction: row;
+    flex-flow: row;
+    display: inline-flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+}
+
+.editCustomerFooter {
+    background-color: rgb(130, 6, 135);
+    align-items: center;
+    flex-direction: row;
+    flex-flow: column;
+    display: inline-flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+}
+
+.labelStyle {
+    color: orange;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    
+}
+
+.addButton {
+    background-color: blue !important;
+}
+
+.addButton:disabled {
+    background-color: gray !important;
+}
+
+.deleteButton {
+    background-color: red;
+}
+
+.deleteButton:hover {
+    background-color: green;
+}
+
+.editButton {
+    background-color: green !important;
+}
+
+.currentValueSpan {
+    color: yellow;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

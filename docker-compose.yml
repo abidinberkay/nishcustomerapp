@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  mysql:
+    platform: linux/amd64
+    image: mysql:8
+    container_name: mysqlcustomerdb
+    restart: always
+    ports:
+      - '3306:3306'
+#    volumes:
+#      - ~/apps/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_PASSWORD=1234
+      - MYSQL_DATABASE=mysqlcustomerdb
+      - DATABASE_HOST=mysqlcustomerdb
+      - MYSQL_ROOT_HOST=%
+      - lower_case_table_names=1
+      - init-connect='GRANT CREATE USER ON . TO 'root'@'%';FLUSH PRIVILEGES;'
+
+  postgres:
+    image: postgres:10.5
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - '5432:5432'
+#    volumes:
+#      - ./postgres-data:/var/lib/postgresql/data
+
+  nishcustomer:
+    container_name: nishcustomerbackend
+    image: nishcustomer
+    build: ./nishcustomer
+    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 5
+        window: 120s
+    ports:
+      - '8080:8080'
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_PASSWORD=1234
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=mysqlcustomerdb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=1234
+    depends_on:
+      - mysql
+      - postgres
+
+  nishcustomerfrontend:
+    container_name: nishcustomerfrontend
+    image: nishcustomerfrontend
+    build: ./nishcustomerfrontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - nishcustomer
+volumes:
+  cache:
+    driver: local
