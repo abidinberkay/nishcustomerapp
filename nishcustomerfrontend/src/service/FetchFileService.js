@@ -12,15 +12,15 @@ export async function deleteFileById(id) {
 export async function addFile(userId, customerId, file) {
 
     let bodyFormData = new FormData();
+    bodyFormData.append("userId", userId); //integer
+    bodyFormData.append("customerId", customerId); //integer
     bodyFormData.append("file", file); //file
-    // bodyFormData.append("userId", userId); //integer
-    // bodyFormData.append("customerId", customerId); //integer
 
 
     return await axios({
         method: "post",
         url: "http://localhost:8080/file",
-        params: {userId, customerId},
+        // params: {userId, customerId},
         data: bodyFormData,
         processData: false,
         // content
