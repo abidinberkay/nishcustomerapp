@@ -44,5 +44,4 @@ public class FileDbConfig {
         return new JpaTransactionManager(entityManagerFactory);
     }
 
-
 }

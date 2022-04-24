@@ -17,6 +17,25 @@ function FilePanel(props) {
     props.refreshTableParam();
   }
 
+  const downloadFile = (fileId) => {
+    service.downloadFile(fileId).then((response) => {
+      
+      console.log(response);
+    })
+  }
+
+  const handleClickDownloadButton = async (fileId) => {
+    // const fileExt = '.pdf';
+    // const response = await service.downloadFile(fileId);
+    // const blob = new Blob([response.data]);
+    // const url = window.URL.createObjectURL(blob);
+    window.open("http://localhost:8080/file/downloadFile/" + fileId);
+    // const a = document.createElement('a');
+    // a.href = url;
+    // a.download = `myfile${fileExt}`;
+    // a.click();
+  }
+
   const refreshTableData = () => {
     props.refreshTableParam();
   }
@@ -31,6 +50,7 @@ function FilePanel(props) {
           <th>File Name</th>
           <th>Last Modified Date</th>
           <th>Edit</th>
+          <th>Download</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -44,7 +64,8 @@ function FilePanel(props) {
               <td>{item.fileName}</td>
               <td>{item.lastModifiedDate}</td>
               <td><Button className='editButton' ><FontAwesomeIcon icon={faFileEdit} /></Button></td>
-                <td><Button className='deleteButton' onClick={() => deleteFileById(item.id)} ><FontAwesomeIcon icon={faTrashRestore} /></Button></td>
+              <td><Button className='deleteButton' onClick={() => handleClickDownloadButton(item.id)} ><FontAwesomeIcon icon={faTrashRestore} /></Button></td>
+              <td><Button className='deleteButton' onClick={() => deleteFileById(item.id)} ><FontAwesomeIcon icon={faTrashRestore} /></Button></td>
             </tr>
           ))}
       </tbody>

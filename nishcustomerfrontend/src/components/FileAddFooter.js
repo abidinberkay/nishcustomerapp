@@ -4,7 +4,7 @@ import * as service from '../service/FetchFileService';
 import { useState } from 'react';
 import { Card, Form } from 'react-bootstrap';
 
-function FileAddFooter() {
+function FileAddFooter(props) {
 
     const [userId, setUserId] = useState('');
     const [customerId, setCustomerId] = useState('');
@@ -23,8 +23,15 @@ function FileAddFooter() {
     }
 
 
-    const addNewFile = async () => {
-        await service.addFile(userId, customerId, fileObject.selectedFile);
+    const addNewFile = () => {
+        service.addFile(userId, customerId, fileObject.selectedFile)
+            .then((response) => {
+                console.log(response.data.name + " is uploaded for user with userId " + response.data.userId);
+                props.refreshTableParam();
+            }).catch((error) => {
+                console.log("Error on file upload")
+            }
+            );
     }
 
     return (

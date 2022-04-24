@@ -7,13 +7,15 @@ import com.nishberkay.nishcustomer.entity.postgresentity.File;
 import com.nishberkay.nishcustomer.exception.CustomerNotFoundException;
 import com.nishberkay.nishcustomer.exception.FileNotFoundException;
 import com.nishberkay.nishcustomer.service.FileService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 @RestController
@@ -31,6 +33,17 @@ public class FileController {
     @GetMapping
     public ResponseEntity<List<File>> getFilesByUserId(@RequestParam("userId") Integer userId) throws CustomerNotFoundException {
         return ResponseEntity.ok(fileService.getAllFilesByUserId(userId));
+    }
+
+    @GetMapping("/downloadFile/{fileId}")
+    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Integer fileId) throws FileNotFoundException {
+
+        File file = fileService.getFileById(fileId);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment;filename=\""+file.getName()+"\"")
+                .body(new ByteArrayResource(file.getData()));
     }
 
     @GetMapping("/fileInfoList")
@@ -52,6 +65,5 @@ public class FileController {
     public boolean delete(@PathVariable Integer fileId) throws CustomerNotFoundException {
         return fileService.delete(fileId);
     }
-
 
 }
