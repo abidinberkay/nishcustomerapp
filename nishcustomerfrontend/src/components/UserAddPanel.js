@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import * as service from '../service/FetchCustomerService';
 import '../style/CustomStyle.css';
 
-function TableFooterPanel(props) {
+function UserAddPanel(props) {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -39,4 +39,4 @@ function TableFooterPanel(props) {
     );
 
 }
-export default TableFooterPanel;
+export default UserAddPanel;

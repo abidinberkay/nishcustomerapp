@@ -1,8 +1,8 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import MainPanel from '../components/MainPanel';
+import UserPanel from '../components/UserPanel';
 
-import TableFooterPanel from '../components/TableFooterPanel';
+import UserAddPanel from '../components/UserAddPanel';
 import * as service from '../service/FetchCustomerService';
 import React, { useEffect, useState } from 'react';
 import '../style/CustomStyle.css';
@@ -31,11 +31,11 @@ function CustomerPage() {
 
         <div className='App'>
             <h1>Customer List</h1>
-            <MainPanel param={customers} refreshTableParam={refreshTableData} />
+            <UserPanel param={customers} refreshTableParam={refreshTableData} />
             <br></br>{/* TODO: remove this br's and use css <br></br> */}
             <br></br> {/* TODO: remove this br's and use css <br></br> */}
             <br></br>{/* TODO: remove this br's and use css <br></br> */}
-            <TableFooterPanel refreshTableParam={refreshTableData} />
+            <UserAddPanel refreshTableParam={refreshTableData} />
             <br></br>{/* TODO: remove this br's and use css <br></br> */}
             <br></br>{/* TODO: remove this br's and use css <br></br> */}
             <br></br>{/* TODO: remove this br's and use css <br></br> */}

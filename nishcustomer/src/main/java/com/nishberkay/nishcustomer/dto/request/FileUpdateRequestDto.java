@@ -18,5 +18,5 @@ public class FileUpdateRequestDto {
     private Integer customerId;
 
     @NotNull
-    private MultipartFile multipartFile;
+    private MultipartFile file;
 }

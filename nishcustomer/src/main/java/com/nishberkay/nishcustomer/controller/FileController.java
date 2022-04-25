@@ -56,8 +56,8 @@ public class FileController {
         return ResponseEntity.ok(fileService.uploadFile(request));
     }
 
-    @PutMapping
-    public ResponseEntity<File> updateFile(@ModelAttribute @Valid FileUpdateRequestDto request) throws FileNotFoundException, IOException, CustomerNotFoundException {
+    @PutMapping(consumes = {"multipart/form-data"})
+    public ResponseEntity<File> updateFile(@ModelAttribute @RequestBody FileUpdateRequestDto request) throws FileNotFoundException, IOException, CustomerNotFoundException {
         return ResponseEntity.ok(fileService.updateFile(request));
     }
 
