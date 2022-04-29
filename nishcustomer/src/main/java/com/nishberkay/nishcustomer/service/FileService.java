@@ -115,10 +115,10 @@ public class FileService {
                 .id(requestDto.getId())
                 .customerId(requestDto.getCustomerId())
                 .userId(requestDto.getUserId())
-                .name(requestDto.getMultipartFile().getName())
+                .name(requestDto.getFile().getOriginalFilename())
                 .creationDate(new Date(System.currentTimeMillis()))
-                .type(requestDto.getMultipartFile().getContentType())
-                .data(requestDto.getMultipartFile().getBytes())
+                .type(requestDto.getFile().getContentType())
+                .data(requestDto.getFile().getBytes())
                 .build();
 
         return fileRepository.save(file);

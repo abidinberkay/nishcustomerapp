@@ -35,7 +35,7 @@ function FilePage() {
                 <br></br>{/* TODO: remove this br's and use css <br></br> */}
                 <br></br>{/* TODO: remove this br's and use css <br></br> */}
                 <br></br>{/* TODO: remove this br's and use css <br></br> */}
-                <FileAddFooter></FileAddFooter>
+                <FileAddFooter refreshTableParam={refreshTableData}></FileAddFooter>
                 <br></br>{/* TODO: remove this br's and use css <br></br> */}
                 <br></br>{/* TODO: remove this br's and use css <br></br> */}
                 <br></br>{/* TODO: remove this br's and use css <br></br> */}

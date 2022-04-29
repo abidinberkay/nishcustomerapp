@@ -8,7 +8,7 @@ import { useState } from 'react';
 import '../style/CustomStyle.css';
 
 
-function MainPanel(props) {
+function UserPanel(props) {
 
   const [isEditPopupOpen, setEditPopup] = useState(false);
   const [customerInfo, setCustomerInfo] = useState({ id: '', name: '', surname: '' })
@@ -61,4 +61,4 @@ function MainPanel(props) {
   );
 }
 
-export default MainPanel;
+export default UserPanel;
