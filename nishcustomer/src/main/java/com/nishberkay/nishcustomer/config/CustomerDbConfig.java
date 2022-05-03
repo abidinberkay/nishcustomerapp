@@ -39,7 +39,7 @@ public class CustomerDbConfig {
         properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return builder.dataSource(dataSource).properties(properties)
-                .packages("com.nishberkay.nishcustomer.entity.mysqlentity").persistenceUnit("Customer").build();
+                .packages("com.nishberkay.nishcustomer.entity.mysqlentity").build();
     }
 
     @Primary
@@ -48,6 +48,4 @@ public class CustomerDbConfig {
             @Qualifier("customerEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
-
-
 }
