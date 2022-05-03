@@ -13,8 +13,11 @@ function CustomerPage() {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
+
         const fetchPostList = async () => {
-            const response = await service.getCustomerList();
+            let jwtTok = await (await service.getJwtToken()).data.jwtToken;
+            // localStorage.setItem("jwtToken", jwtTok);
+            const response = await service.getCustomerList(jwtTok);
             setCustomers(response.data);
         };
         fetchPostList()
