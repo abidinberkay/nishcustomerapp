@@ -20,7 +20,7 @@ function EditUserPopup(props) {
 
     const editCustomer = async () => {
         await service.editCustomer(props.customerInfo.id, firstName, lastName);
-        
+
         window.location.reload();
     }
 
@@ -28,20 +28,31 @@ function EditUserPopup(props) {
         <>
 
             <Card className='editCustomerFooter'>
-            <span className='currentValueSpan'>Edit User</span>
+                {/* <div>
+                    <span className='currentValueSpan'>Edit User</span>
+                </div> */}
                 <Form className='editCustomerFooter'>
-                    <div>
-                        <span className='currentValueSpan'>Current Values</span>
-                        <input type="text" disabled readOnly placeholder={initialName} value={initialName}></input>
-                        <input type="text" disabled readOnly placeholder={initialSurname} value={initialSurname}></input>
+                    <div className='editPanelInnerStyle'>
+                        <div className='labelHeader'>
+                            <span className='currentValueSpan'>Current Values</span>
+                            <span className='currentValueSpan'>New Values</span>
+                        </div>
+                        <div>
+                            <div>
+                                {/* <span className='currentValueSpan'>Current Values</span> */}
+                                <input type="text" disabled readOnly placeholder={initialName} value={initialName}></input>
+                                <input type="text" disabled readOnly placeholder={initialSurname} value={initialSurname}></input>
+                            </div>
+
+                            <div className='currentValueSpan'>
+                                {/* <span >New Values</span> */}
+                                <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)}></input>
+                                <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)}></input>
+                            </div>
+                        </div>
+                        <label hidden={!isButtonDisabled} className='customerWarningStyle'>Field lengths must be at least 4 character</label>
+                        
                     </div>
-                    
-                    <div className='currentValueSpan'>
-                    <span >New Values</span>
-                        <input type="text" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)}></input>
-                        <input type="text" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)}></input>
-                    </div>
-                    <label hidden={!isButtonDisabled} className='labelStyle'>Field lengths must be at least 4 character</label>
                     <Button disabled={isButtonDisabled} onClick={() => editCustomer(firstName, lastName)} className='addButton'>Edit</Button>
 
                 </Form>

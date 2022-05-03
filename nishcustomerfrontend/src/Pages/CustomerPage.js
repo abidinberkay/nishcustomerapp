@@ -7,6 +7,7 @@ import * as service from '../service/FetchCustomerService';
 import React, { useEffect, useState } from 'react';
 import '../style/CustomStyle.css';
 import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 
 function CustomerPage() {
 
@@ -16,8 +17,8 @@ function CustomerPage() {
 
         const fetchPostList = async () => {
             let jwtTok = await (await service.getJwtToken()).data.jwtToken;
-            // localStorage.setItem("jwtToken", jwtTok);
-            const response = await service.getCustomerList(jwtTok);
+            localStorage.setItem("jwtToken", jwtTok);
+            const response = await service.getCustomerList();
             setCustomers(response.data);
         };
         fetchPostList()
@@ -33,16 +34,18 @@ function CustomerPage() {
     return (
 
         <div className='App'>
-            <h1>Customer List</h1>
-            <UserPanel param={customers} refreshTableParam={refreshTableData} />
-            <br></br>{/* TODO: remove this br's and use css <br></br> */}
-            <br></br> {/* TODO: remove this br's and use css <br></br> */}
-            <br></br>{/* TODO: remove this br's and use css <br></br> */}
-            <UserAddPanel refreshTableParam={refreshTableData} />
-            <br></br>{/* TODO: remove this br's and use css <br></br> */}
-            <br></br>{/* TODO: remove this br's and use css <br></br> */}
-            <br></br>{/* TODO: remove this br's and use css <br></br> */}
-            <Link to='/file'>Click to see file list</Link>
+            <Card className='card-section'>
+                <h1>Customer List</h1>
+            </Card>
+            <Card className='card-section'>
+                <UserPanel param={customers} refreshTableParam={refreshTableData} />
+            </Card>
+            <Card className='card-section'>
+                <UserAddPanel refreshTableParam={refreshTableData} />
+            </Card>
+            <Card className='card-section'>
+                <Link to='/file'>Click to see file list</Link>
+            </Card>
         </div>
 
     );

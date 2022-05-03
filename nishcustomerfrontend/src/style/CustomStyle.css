@@ -9,7 +9,7 @@
 }
 
 .editCustomerFooter {
-    background-color: rgb(130, 6, 135);
+    background-color:darkgrey;
     align-items: center;
     flex-direction: row;
     flex-flow: column;
@@ -18,8 +18,9 @@
     justify-content: space-between;
 }
 
-.labelStyle {
-    color: orange;
+.customerWarningStyle {
+    color: red;
+    font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
     
@@ -37,6 +38,10 @@
     background-color: red;
 }
 
+.downloadButton {
+    background-color: orange;
+}
+
 .deleteButton:hover {
     background-color: green;
 }
@@ -46,6 +51,26 @@
 }
 
 .currentValueSpan {
-    color: yellow;
+    color: black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.card-section {
+    width: auto
+}
+
+.labelHeader {
+    align-items: center;
+    flex-direction: column;
+    flex-flow: column;
+    display: inline-flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+}
+
+.editPanelInnerStyle {
+    flex-flow: row;
+    display: inline-flex;
+    width: -webkit-fill-available;
+    justify-content: space-between;
 }

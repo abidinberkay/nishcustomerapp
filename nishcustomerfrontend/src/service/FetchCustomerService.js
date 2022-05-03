@@ -1,17 +1,9 @@
 import axios from 'axios';
 
+export async function getCustomerList() {
 
-export async function getCustomerById(id) {
-    return axios.get("http://localhost:8080/customer", { params: { customerId: 1 } });
-}
-
-export async function getCustomerList(jwtTok) {
-
-    // let tok = (await getJwtToken()).data.jwtToken;
-
-    // let tok = localStorage.getItem("jwtToken");
+    let jwtTok = localStorage.getItem("jwtToken");
     
-
     return (await axios({
         method: "get",
         url: "http://localhost:8080/customer/list",
@@ -19,7 +11,6 @@ export async function getCustomerList(jwtTok) {
             'Authorization': 'Bearer ' + jwtTok
         },
     }))
-
 }
 
 export async function getJwtToken() {
@@ -33,20 +24,34 @@ export async function getJwtToken() {
 }
 
 export async function deleteCustomerById(id) {
-    return axios.delete("http://localhost:8080/customer/" + id)
+    return (await axios({
+        method: "delete",
+        url: "http://localhost:8080/customer/" + id,
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("jwtToken")
+        },
+    }))
 }
 
 export async function editCustomer(id, name, surname) {
-    return axios.put('http://localhost:8080/customer', {
-        id,
-        firstName: name,
-        lastName: surname
-    })
+    return (await axios({
+        method: "put",
+        url: "http://localhost:8080/customer",
+        data: {id : id, firstName: name, lastName: surname},
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("jwtToken")
+        },
+    }))
 }
 
 export async function addCustomer(name, surname) {
-    return axios.post('http://localhost:8080/customer', {
-        firstName: name,
-        lastName: surname
-    })
+
+    return (await axios({
+        method: "post",
+        url: "http://localhost:8080/customer",
+        data: {firstName: name, lastName: surname},
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("jwtToken")
+        },
+    }))
 }
