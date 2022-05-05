@@ -29,9 +29,9 @@ services:
 #    volumes:
 #      - ./postgres-data:/var/lib/postgresql/data
 
-  nishcustomer:
-    container_name: nishcustomerbackend
-    image: nishcustomer
+  backendnish:
+    container_name: backendnish
+    image: backendnish
     build: ./nishcustomer
     restart: always
     deploy:
@@ -53,14 +53,14 @@ services:
       - mysql
       - postgres
 
-  nishcustomerfrontend:
-    container_name: nishcustomerfrontend
-    image: nishcustomerfrontend
+  frontendnish:
+    container_name: frontendnish
+    image: frontendnish
     build: ./nishcustomerfrontend
     ports:
       - "3000:3000"
     depends_on:
-      - nishcustomer
+      - backendnish
 volumes:
   cache:
     driver: local
