@@ -7,4 +7,4 @@
 FROM openjdk:11.0.14
 ADD ./target/nishcustomer-0.0.1-SNAPSHOT.jar nishcustomer.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","nishcustomer.jar"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=DOCKER", "nishcustomer.jar"]
